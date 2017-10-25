@@ -2,7 +2,14 @@
 <resources>
     <color name="colorPrimary">#fe72b8</color>
     <color name="colorPrimaryDark">#de579b</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ff7ca9</color>
 
     <color name="background_color">#fff7fa</color>
+
+    <color name="editText_hint">#dbb8c4</color>
+    <color name="editText_text">#706669</color>
+
+    <color name="btn_background">#fe72b8</color>
+    <color name="btn_text">#fff</color>
+
 </resources>

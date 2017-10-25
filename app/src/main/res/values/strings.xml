@@ -30,5 +30,20 @@
     <string name="main_drawer_relatorio_pagamentos">Relatório de pagamentos</string>
 
 
+    <!-- CadProduto -->
+
+    <string name="title_activity_cad_produto">Cadastro de produtos</string>
+
+    <string name="cadProduto_editText_hint_referencia">Referência</string>
+    <string name="cadProduto_editText_hint_marca">Marca</string>
+    <string name="cadProduto_editText_hint_descricao">Descrição</string>
+    <string name="cadProduto_editText_hint_precoCusto">Preço de custo</string>
+    <string name="cadProduto_editText_hint_precoVenda">Preço de venda</string>
+    <string name="cadProduto_btn_text_gerar">Gerar</string>
+    <string name="cadProduto_btn_text_grade">Grade</string>
+    <string name="cadProduto_textView_totalItens">Total de itens:</string>
+    <string name="cadProduto_btn_text_concluir">Adicionar</string>
+
+
 
 </resources>
