@@ -3,11 +3,11 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_venda"
             android:icon="@drawable/ic_menu_venda"
             android:title="@string/main_drawer_iniVenda" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_pagamento"
             android:icon="@drawable/ic_menu_pagamento"
             android:title="@string/main_drawer_gerPagamento" />
 
@@ -18,16 +18,16 @@
         <menu>
 
             <item
-                android:id="@+id/nav_slideshow"
+                android:id="@+id/nav_addCliente"
                 android:icon="@drawable/ic_menu_add"
                 android:title="@string/main_drawer_gerenciamento_addCliente" />
             <item
-                android:id="@+id/nav_manage"
+                android:id="@+id/nav_addProduto"
                 android:icon="@drawable/ic_menu_add"
                 android:title="@string/main_drawer_gerenciamento_addProduto" />
 
             <item
-                android:id="@+id/nav_manage1"
+                android:id="@+id/nav_trocaProduto"
                 android:icon="@drawable/ic_menu_troca"
                 android:title="@string/main_drawer_gerenciamento_trocaProduto" />
 
@@ -39,19 +39,19 @@
 
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_relatorio_cliente"
                 android:icon="@drawable/ic_menu_relatorio"
                 android:title="@string/main_drawer_relatorio_cliente" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_relatorio_produto"
                 android:icon="@drawable/ic_menu_relatorio"
                 android:title="@string/main_drawer_relatorio_produto" />
             <item
-                android:id="@+id/nav_send1"
+                android:id="@+id/nav_relatorio_venda"
                 android:icon="@drawable/ic_menu_relatorio"
                 android:title="@string/main_drawer_relatorio_venda" />
             <item
-                android:id="@+id/nav_send2"
+                android:id="@+id/nav_relatorio_pagamento"
                 android:icon="@drawable/ic_menu_relatorio"
                 android:title="@string/main_drawer_relatorio_pagamentos" />
 
