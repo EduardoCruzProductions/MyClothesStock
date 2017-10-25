@@ -6,4 +6,29 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- Tela principal -->
+
+    <!-- Barra de menu lateral -->
+
+    <string name="main_drawer_iniVenda">Iniciar venda</string>
+    <string name="main_drawer_gerPagamento">Pagamentos</string>
+
+
+    <string name="main_drawer_title_gerenciamento">Gerenciamento</string>
+
+    <string name="main_drawer_gerenciamento_addCliente">Adicionar cliente</string>
+    <string name="main_drawer_gerenciamento_addProduto">Adicionar produto</string>
+    <string name="main_drawer_gerenciamento_trocaProduto">Troca de produto</string>
+
+
+    <string name="main_drawer_title_relatorio">Relatórios</string>
+
+    <string name="main_drawer_relatorio_cliente">Relatório de clientes</string>
+    <string name="main_drawer_relatorio_produto">Relatório de produtos</string>
+    <string name="main_drawer_relatorio_venda">Relatório de vendas</string>
+    <string name="main_drawer_relatorio_pagamentos">Relatório de pagamentos</string>
+
+
+
 </resources>
