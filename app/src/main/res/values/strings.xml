@@ -44,6 +44,20 @@
     <string name="cadProduto_textView_totalItens">Total de itens:</string>
     <string name="cadProduto_btn_text_concluir">Adicionar</string>
 
+    <string name="cadProduto_error_null_abrirGerador">Preencha primeiramente o campo Preço de custo!</string>
+
+    <string name="cadProduto_alert_gerador_title">Gerar preço de venda</string>
+    <string name="cadProduto_alert_gerador_radioOpValor">Valor</string>
+    <string name="cadProduto_alert_gerador_radioOpPorcent">Porcentagem</string>
+
+
+    <!-- Basics -->
+
+    <string name="text_confirm">Confirmar</string>
+    <string name="text_cancel">Cancelar</string>
+
+    <string name="error_conversao_valores">Erro de conversão de valores!</string>
+
 
 
 </resources>
