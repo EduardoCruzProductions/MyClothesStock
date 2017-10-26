@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,24 +51,31 @@ public class CadProduto extends AppCompatActivity {
 
         }else {
 
-            try{
+            LayoutInflater layoutInflater = LayoutInflater.from(CadProduto.this);
+            View promptView = layoutInflater.inflate(R.layout.alert_cad_produto_gerador, null);
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CadProduto.this);
+            alertDialogBuilder.setView(promptView);
 
-                Double value = Double.parseDouble(pCusto);
+            final RadioGroup radios = (RadioGroup) promptView.findViewById(R.id.cadProduto_alert_gerador_radioGroup);
+            final EditText valor = (EditText) promptView.findViewById(R.id.cadProduto_alert_gerador_editText_valor);
 
-                LayoutInflater layoutInflater = LayoutInflater.from(CadProduto.this);
-                View promptView = layoutInflater.inflate(R.layout.alert_cad_produto_gerador, null);
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CadProduto.this);
-                alertDialogBuilder.setView(promptView);
-
-                final RadioButton rbValor = (RadioButton) findViewById(R.id.cadProduto_alert_gerador_radioButton_valor);
-                final RadioButton rbPorcent = (RadioButton) findViewById(R.id.cadProduto_alert_gerador_radioButton_porcent);
-                final EditText valor = (EditText) findViewById(R.id.cadProduto_alert_gerador_editText_valor);
-
-                alertDialogBuilder.setCancelable(true)
+            alertDialogBuilder.setCancelable(true)
                         .setPositiveButton(R.string.text_confirm, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
 
-                                //action positiva
+                                switch (radios.getCheckedRadioButtonId()){
+
+                                    case R.id.cadProduto_alert_gerador_radioButton_valor:
+
+                                        calcPrecoVenda(Double.parseDouble(valor.toString()), "valor");
+                                        break;
+
+                                    case R.id.cadProduto_alert_gerador_radioButton_porcent:
+
+                                        calcPrecoVenda(Double.parseDouble(valor.toString()), "porcentagem");
+                                        break;
+
+                                }
 
                             }
                         })
@@ -82,15 +90,34 @@ public class CadProduto extends AppCompatActivity {
                                     }
                                 });
 
-                AlertDialog alert = alertDialogBuilder.create();
-                alert.show();
+            AlertDialog alert = alertDialogBuilder.create();
+            alert.show();
 
-            }catch(Exception e){
+        }
 
-                System.err.println("Error - "+e.getMessage());
-                Toast.makeText(getApplicationContext(), R.string.error_conversao_valores, Toast.LENGTH_LONG).show();
+    }
+
+    public void calcPrecoVenda(Double valor, String type){
+
+        try{
+
+            Double base = Double.parseDouble(this.precoCusto.toString());
+
+            if(type.equals("valor")){
+
+                base += valor;
+
+            }else if(type.equals("porcentagem")){
+
+                base += base*(valor/100);
 
             }
+
+            this.precoVenda.setText(base.toString());
+
+        }catch(Exception e){
+
+            Toast.makeText(getApplicationContext(), R.string.error_conversao_valores, Toast.LENGTH_LONG).show();
 
         }
 
