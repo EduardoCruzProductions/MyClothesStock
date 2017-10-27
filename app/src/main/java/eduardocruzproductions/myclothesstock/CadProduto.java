@@ -128,6 +128,33 @@ public class CadProduto extends AppCompatActivity {
 
     public void showGradeIncluder(View view){
 
+        LayoutInflater layoutInflater = LayoutInflater.from(CadProduto.this);
+        View promptView = layoutInflater.inflate(R.layout.alert_cad_produto_grade, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CadProduto.this);
+        alertDialogBuilder.setView(promptView);
+
+        alertDialogBuilder.setCancelable(true)
+                .setPositiveButton(R.string.text_confirm, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        //positive action
+
+                    }
+                })
+                .setNegativeButton(R.string.text_cancel,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                //caso o botao cancelar seja selecionado
+
+                                dialog.cancel();//cancelar operacao
+
+                            }
+                        });
+
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
+
     }
 
     public void adicionar(){

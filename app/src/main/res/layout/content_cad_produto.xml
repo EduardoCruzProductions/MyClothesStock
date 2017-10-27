@@ -171,12 +171,13 @@
                 android:id="@+id/button8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/cadProduto_btn_text_grade"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:backgroundTint="@color/btn_background"
-                android:textColor="@color/btn_text"/>
+                android:onClick="showGradeIncluder"
+                android:text="@string/cadProduto_btn_text_grade"
+                android:textColor="@color/btn_text" />
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
