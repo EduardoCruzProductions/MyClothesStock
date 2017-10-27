@@ -50,6 +50,10 @@
     <string name="cadProduto_alert_gerador_radioOpValor">Valor</string>
     <string name="cadProduto_alert_gerador_radioOpPorcent">Porcentagem</string>
 
+    <string name="cadProduto_alert_grade_title">Definir grade</string>
+    <string name="cadProduto_alert_grade_editText_hint_tamanho">Tamanho</string>
+    <string name="cadProduto_alert_grade_editText_hint_quantidade">Quantidade</string>
+    <string name="cadProduto_alert_grade_btn_text_incluir">Incluir</string>
 
     <!-- Basics -->
 

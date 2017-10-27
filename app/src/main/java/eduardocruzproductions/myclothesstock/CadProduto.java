@@ -126,6 +126,10 @@ public class CadProduto extends AppCompatActivity {
 
     }
 
+    public void showGradeIncluder(View view){
+
+    }
+
     public void adicionar(){
 
     }
