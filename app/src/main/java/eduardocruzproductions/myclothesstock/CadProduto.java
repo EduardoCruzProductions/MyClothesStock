@@ -56,24 +56,34 @@ public class CadProduto extends AppCompatActivity {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CadProduto.this);
             alertDialogBuilder.setView(promptView);
 
-            final RadioGroup radios = (RadioGroup) promptView.findViewById(R.id.cadProduto_alert_gerador_radioGroup);
-            final EditText valor = (EditText) promptView.findViewById(R.id.cadProduto_alert_gerador_editText_valor);
+            final RadioGroup radios = ((RadioGroup) promptView.findViewById(R.id.cadProduto_alert_gerador_radioGroup));
+            final EditText valor = ((EditText) promptView.findViewById(R.id.cadProduto_alert_gerador_editText_valor));
 
             alertDialogBuilder.setCancelable(true)
                         .setPositiveButton(R.string.text_confirm, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
 
-                                switch (radios.getCheckedRadioButtonId()){
+                                try{
 
-                                    case R.id.cadProduto_alert_gerador_radioButton_valor:
+                                    Double v = Double.parseDouble(valor.getText().toString());
 
-                                        calcPrecoVenda(Double.parseDouble(valor.toString()), "valor");
-                                        break;
+                                    switch (radios.getCheckedRadioButtonId()){
 
-                                    case R.id.cadProduto_alert_gerador_radioButton_porcent:
+                                        case R.id.cadProduto_alert_gerador_radioButton_valor:
 
-                                        calcPrecoVenda(Double.parseDouble(valor.toString()), "porcentagem");
-                                        break;
+                                            calcPrecoVenda(v, "valor");
+                                            break;
+
+                                        case R.id.cadProduto_alert_gerador_radioButton_porcent:
+
+                                            calcPrecoVenda(v, "porcentagem");
+                                            break;
+
+                                    }
+
+                                }catch(Exception e){
+
+                                    Toast.makeText(getApplicationContext(), R.string.error_conversao_valores, Toast.LENGTH_LONG).show();
 
                                 }
 
@@ -97,29 +107,22 @@ public class CadProduto extends AppCompatActivity {
 
     }
 
-    public void calcPrecoVenda(Double valor, String type){
+    public void calcPrecoVenda(Double valor, String type) throws Exception{
 
-        try{
 
-            Double base = Double.parseDouble(this.precoCusto.toString());
+        Double base = Double.parseDouble(this.precoCusto.getText().toString());
 
-            if(type.equals("valor")){
+        if(type.equals("valor")){
 
-                base += valor;
+            base += valor;
 
-            }else if(type.equals("porcentagem")){
+        }else if(type.equals("porcentagem")){
 
-                base += base*(valor/100);
-
-            }
-
-            this.precoVenda.setText(base.toString());
-
-        }catch(Exception e){
-
-            Toast.makeText(getApplicationContext(), R.string.error_conversao_valores, Toast.LENGTH_LONG).show();
+            base += base*(valor/100);
 
         }
+
+        this.precoVenda.setText(base.toString());
 
     }
 
