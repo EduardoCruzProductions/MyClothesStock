@@ -7,11 +7,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+
+import eduardocruzproductions.myclothesstock.adaptadores.GradeAdapterListView;
+import eduardocruzproductions.myclothesstock.entidades.Grade;
 
 public class CadProduto extends AppCompatActivity {
 
@@ -21,6 +28,8 @@ public class CadProduto extends AppCompatActivity {
     EditText precoCusto;
     EditText precoVenda;
     TextView totalItens;
+
+    private ArrayList<Grade> listGrade = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,8 +139,34 @@ public class CadProduto extends AppCompatActivity {
 
         LayoutInflater layoutInflater = LayoutInflater.from(CadProduto.this);
         View promptView = layoutInflater.inflate(R.layout.alert_cad_produto_grade, null);
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CadProduto.this);
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CadProduto.this);
         alertDialogBuilder.setView(promptView);
+
+        final EditText editTextTamanho = ((EditText) promptView.findViewById(R.id.alert_cad_produto_grade_editText_tamanho));
+        final EditText editTextQuantidade = ((EditText) promptView.findViewById(R.id.alert_cad_produto_grade_editText_quantidade));
+        final Button button = ((Button) promptView.findViewById(R.id.alert_cad_produto_grade_btn_incluir));
+
+        final ListView listView = ((ListView) promptView.findViewById(R.id.alert_cad_produto_grade_listView));
+
+        final GradeAdapterListView adapterGrade = new GradeAdapterListView(getApplicationContext(), listGrade);
+        listView.setAdapter(adapterGrade);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Grade g = new Grade();
+                g.setTamanho(editTextTamanho.getText().toString());
+                g.setQuantidade(Integer.parseInt(editTextQuantidade.getText().toString()));
+
+                listGrade.add(g);
+
+                System.out.println("Novo valor incluido: Tamanho - "+g.getTamanho()+" Quantidade - "+g.getQuantidade()+" ListSize "+listGrade.size());
+
+                showGradeIncluder(view);//esse metodo funciona, mas cria uma janela nova a cada execucao
+
+            }
+        });
 
         alertDialogBuilder.setCancelable(true)
                 .setPositiveButton(R.string.text_confirm, new DialogInterface.OnClickListener() {

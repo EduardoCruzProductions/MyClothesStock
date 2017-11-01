@@ -17,7 +17,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/alert_cad_produto_grade_editText_tamanho"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
@@ -40,7 +40,7 @@
         android:layout_marginLeft="20dp"/>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/alert_cad_produto_grade_editText_quantidade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -58,13 +58,13 @@
         android:textColor="@color/editText_text"
         android:textColorHint="@color/editText_hint"
         android:textSize="32dp"
-        android:layout_below="@+id/editText"/>
+        android:layout_below="@+id/alert_cad_produto_grade_editText_tamanho"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/alert_cad_produto_grade_btn_incluir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/alert_cad_produto_grade_editText_quantidade"
         android:layout_centerHorizontal="true"
         android:text="@string/cadProduto_alert_grade_btn_text_incluir"
         android:layout_marginTop="15dp"
@@ -72,13 +72,14 @@
         android:layout_marginRight="20dp"/>
 
     <ListView
+        android:id="@+id/alert_cad_produto_grade_listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/button"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/alert_cad_produto_grade_btn_incluir"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginTop="20dp" />
 
 </RelativeLayout>
