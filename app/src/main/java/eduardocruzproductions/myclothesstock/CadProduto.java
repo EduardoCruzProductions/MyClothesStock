@@ -2,6 +2,7 @@ package eduardocruzproductions.myclothesstock;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,14 +29,22 @@ public class CadProduto extends AppCompatActivity {
     EditText precoVenda;
     TextView totalItens;
 
-    private ArrayList<Grade> listGrade = new ArrayList<>();
+    private static ArrayList<Grade> listGrade = new ArrayList<>();
+
+    public static ArrayList<Grade> getListGrade() {
+        return listGrade;
+    }
+
+    public static void setListGrade(ArrayList<Grade> listGrade) {
+        CadProduto.listGrade = listGrade;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cad_produto);
 
-        referencia = (EditText) findViewById(R.id.cadProduto_alert_gerador_editText_valor);
+        referencia = (EditText) findViewById(R.id.cadProduto_editText_referencia);
         marca = (EditText) findViewById(R.id.cadProduto_editText_marca);
         descricao = (EditText) findViewById(R.id.cadProduto_editText_descricao);
         precoCusto = (EditText) findViewById(R.id.cadProduto_editText_precoCusto);
@@ -45,6 +53,16 @@ public class CadProduto extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Grade g = new Grade();
+        g.setQuantidade(2);
+        g.setTamanho("m");
+        listGrade.add(g);
+
+        Grade g2 = new Grade();
+        g2.setQuantidade(1);
+        g2.setTamanho("g");
+        listGrade.add(g2);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -66,7 +84,7 @@ public class CadProduto extends AppCompatActivity {
             alertDialogBuilder.setView(promptView);
 
             final RadioGroup radios = ((RadioGroup) promptView.findViewById(R.id.cadProduto_alert_gerador_radioGroup));
-            final EditText valor = ((EditText) promptView.findViewById(R.id.cadProduto_alert_gerador_editText_valor));
+            final EditText valor = ((EditText) promptView.findViewById(R.id.cadProduto_editText_referencia));
 
             alertDialogBuilder.setCancelable(true)
                         .setPositiveButton(R.string.text_confirm, new DialogInterface.OnClickListener() {
@@ -137,58 +155,8 @@ public class CadProduto extends AppCompatActivity {
 
     public void showGradeIncluder(View view){
 
-        LayoutInflater layoutInflater = LayoutInflater.from(CadProduto.this);
-        View promptView = layoutInflater.inflate(R.layout.alert_cad_produto_grade, null);
-        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CadProduto.this);
-        alertDialogBuilder.setView(promptView);
-
-        final EditText editTextTamanho = ((EditText) promptView.findViewById(R.id.alert_cad_produto_grade_editText_tamanho));
-        final EditText editTextQuantidade = ((EditText) promptView.findViewById(R.id.alert_cad_produto_grade_editText_quantidade));
-        final Button button = ((Button) promptView.findViewById(R.id.alert_cad_produto_grade_btn_incluir));
-
-        final ListView listView = ((ListView) promptView.findViewById(R.id.alert_cad_produto_grade_listView));
-
-        final GradeAdapterListView adapterGrade = new GradeAdapterListView(getApplicationContext(), listGrade);
-        listView.setAdapter(adapterGrade);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Grade g = new Grade();
-                g.setTamanho(editTextTamanho.getText().toString());
-                g.setQuantidade(Integer.parseInt(editTextQuantidade.getText().toString()));
-
-                listGrade.add(g);
-
-                System.out.println("Novo valor incluido: Tamanho - "+g.getTamanho()+" Quantidade - "+g.getQuantidade()+" ListSize "+listGrade.size());
-
-                showGradeIncluder(view);//esse metodo funciona, mas cria uma janela nova a cada execucao
-
-            }
-        });
-
-        alertDialogBuilder.setCancelable(true)
-                .setPositiveButton(R.string.text_confirm, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-
-                        //positive action
-
-                    }
-                })
-                .setNegativeButton(R.string.text_cancel,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-
-                                //caso o botao cancelar seja selecionado
-
-                                dialog.cancel();//cancelar operacao
-
-                            }
-                        });
-
-        AlertDialog alert = alertDialogBuilder.create();
-        alert.show();
+        Intent i = new Intent(CadProduto.this, InsertGrade.class);
+        startActivity(i);
 
     }
 

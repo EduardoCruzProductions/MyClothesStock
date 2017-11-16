@@ -42,6 +42,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="eduardocruzproductions.myclothesstock.Main" />
         </activity>
+        <activity
+            android:name=".InsertGrade"
+            android:label="@string/title_activity_insert_grade"
+            android:parentActivityName=".CadProduto"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="eduardocruzproductions.myclothesstock.CadProduto" />
+        </activity>
     </application>
 
 </manifest>
