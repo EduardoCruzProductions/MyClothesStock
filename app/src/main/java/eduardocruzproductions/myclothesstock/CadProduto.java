@@ -56,12 +56,12 @@ public class CadProduto extends AppCompatActivity {
 
         Grade g = new Grade();
         g.setQuantidade(2);
-        g.setTamanho("m");
+        g.setTamanho("M");
         listGrade.add(g);
 
         Grade g2 = new Grade();
         g2.setQuantidade(1);
-        g2.setTamanho("g");
+        g2.setTamanho("G");
         listGrade.add(g2);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

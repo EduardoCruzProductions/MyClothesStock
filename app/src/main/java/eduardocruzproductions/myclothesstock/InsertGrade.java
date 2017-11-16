@@ -1,19 +1,24 @@
 package eduardocruzproductions.myclothesstock;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import eduardocruzproductions.myclothesstock.adaptadores.GradeAdapterListView;
 import eduardocruzproductions.myclothesstock.entidades.Grade;
 
 public class InsertGrade extends AppCompatActivity {
+
+    EditText editTextTamanho;
+    EditText editTextQuantidade;
+
+    ListView listView;
 
     private ArrayList<Grade> listGrade = new ArrayList<>();
 
@@ -26,13 +31,25 @@ public class InsertGrade extends AppCompatActivity {
 
         listGrade = CadProduto.getListGrade();
 
-        for(Grade g : listGrade){
+        editTextTamanho = (EditText) findViewById(R.id.insertGrade_editText_tamanho);
+        editTextQuantidade = (EditText) findViewById(R.id.insertGrade_editText_quantidade);
 
-            System.out.println(g.getQuantidade()+" - "+g.getTamanho());
+        listView = (ListView) findViewById(R.id.insertGrade_listView);
 
-        }
+        updateList();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    private void updateList(){
+
+        GradeAdapterListView adapter = new GradeAdapterListView(getApplicationContext(),listGrade);
+        listView.setAdapter(adapter);
+
+    }
+
+    public void add(View v){
+
     }
 
     //metodo chanado ai finalizar a activity
