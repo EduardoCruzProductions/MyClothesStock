@@ -63,6 +63,7 @@
     <string name="text_cancel">Cancelar</string>
 
     <string name="error_conversao_valores">Erro de conversão de valores!</string>
+    <string name="error_preecha_todos_valores">Preencha todos os campos!</string>
 
 
 

@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -49,6 +50,41 @@ public class InsertGrade extends AppCompatActivity {
     }
 
     public void add(View v){
+
+        String tamanho = editTextTamanho.getText().toString();
+        String textQuantidade = editTextQuantidade.getText().toString();
+        int quantidade;
+
+        if(tamanho.isEmpty() || textQuantidade.isEmpty()){
+
+            Toast.makeText(getApplicationContext(), R.string.error_preecha_todos_valores, Toast.LENGTH_LONG).show();
+
+        }else{
+
+            try{
+
+                quantidade = Integer.parseInt(textQuantidade);
+                tamanho = tamanho.toUpperCase();
+
+                Grade g = new Grade();
+                g.setTamanho(tamanho);
+                g.setQuantidade(quantidade);
+                listGrade.add(g);
+
+                updateList();
+                editTextTamanho.setText("");
+                editTextQuantidade.setText("");
+
+            }catch (Exception e){
+
+                System.err.println("Erro de conversão de valores:");
+                System.err.println(e.getMessage());
+
+                Toast.makeText(getApplicationContext(), R.string.error_preecha_todos_valores, Toast.LENGTH_LONG).show();
+
+            }
+
+        }
 
     }
 

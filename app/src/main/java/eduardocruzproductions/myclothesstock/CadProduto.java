@@ -54,16 +54,6 @@ public class CadProduto extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Grade g = new Grade();
-        g.setQuantidade(2);
-        g.setTamanho("M");
-        listGrade.add(g);
-
-        Grade g2 = new Grade();
-        g2.setQuantidade(1);
-        g2.setTamanho("G");
-        listGrade.add(g2);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
