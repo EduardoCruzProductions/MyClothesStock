@@ -27,7 +27,7 @@ public class CadProduto extends AppCompatActivity {
     EditText descricao;
     EditText precoCusto;
     EditText precoVenda;
-    TextView totalItens;
+    static TextView totalItens;
 
     private static ArrayList<Grade> listGrade = new ArrayList<>();
 
@@ -54,7 +54,22 @@ public class CadProduto extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        updateQtItensText();
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    public static void updateQtItensText(){
+
+        Integer total = 0;
+        for(Grade g : listGrade){
+
+            total += g.getQuantidade();
+
+        }
+
+        totalItens.setText(total.toString());
 
     }
 
@@ -147,6 +162,7 @@ public class CadProduto extends AppCompatActivity {
 
         Intent i = new Intent(CadProduto.this, InsertGrade.class);
         startActivity(i);
+        updateQtItensText();
 
     }
 

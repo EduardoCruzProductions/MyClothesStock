@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -36,6 +37,17 @@ public class InsertGrade extends AppCompatActivity {
         editTextQuantidade = (EditText) findViewById(R.id.insertGrade_editText_quantidade);
 
         listView = (ListView) findViewById(R.id.insertGrade_listView);
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                listGrade.remove(position);
+                updateList();
+                Toast.makeText(getApplicationContext(), R.string.info_item_excluido, Toast.LENGTH_LONG).show();
+
+                return false;
+            }
+        });
 
         updateList();
 
@@ -93,6 +105,7 @@ public class InsertGrade extends AppCompatActivity {
     public void finish(){
         super.finish();
         CadProduto.setListGrade(listGrade);
+        CadProduto.updateQtItensText();
     }
 
     //metodo chamado quando a opção voltar da actionbar é selecionado
