@@ -7,8 +7,8 @@ public class Produto extends SugarRecord{
     private String referencia;
     private String descricao;
     private String marca;
-    private String preco_custo;
-    private String preco_venda;
+    private Double preco_custo;
+    private Double preco_venda;
 
     public Produto() {
     }
@@ -37,19 +37,19 @@ public class Produto extends SugarRecord{
         this.marca = marca;
     }
 
-    public String getPreco_custo() {
+    public Double getPreco_custo() {
         return preco_custo;
     }
 
-    public void setPreco_custo(String preco_custo) {
+    public void setPreco_custo(Double preco_custo) {
         this.preco_custo = preco_custo;
     }
 
-    public String getPreco_venda() {
+    public Double getPreco_venda() {
         return preco_venda;
     }
 
-    public void setPreco_venda(String preco_venda) {
+    public void setPreco_venda(Double preco_venda) {
         this.preco_venda = preco_venda;
     }
 

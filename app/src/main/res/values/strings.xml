@@ -57,6 +57,7 @@
     <string name="insertGrade_editText_hint_quantidade">Quantidade</string>
     <string name="insertGrade_btn_text_incluir">Incluir</string>
     <string name="insertGrade_textView_pressRemove">Mantenha pressionado para remover um item.</string>
+    <string name="insertGrade_error_listaVazia">Nenhum item em grade!</string>
 
     <!-- Basics -->
 
@@ -65,6 +66,7 @@
 
     <string name="error_conversao_valores">Erro de conversão de valores!</string>
     <string name="error_preecha_todos_valores">Preencha todos os campos!</string>
+    <string name="error_falha_registro">Erro de registro!</string>
 
     <string name="info_item_excluido">Item excluido com sucesso!</string>
 

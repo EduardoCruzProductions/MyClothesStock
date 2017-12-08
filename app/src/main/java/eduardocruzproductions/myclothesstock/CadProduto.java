@@ -15,10 +15,16 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.orm.SugarContext;
+import com.orm.util.SugarConfig;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import eduardocruzproductions.myclothesstock.adaptadores.GradeAdapterListView;
 import eduardocruzproductions.myclothesstock.entidades.Grade;
+import eduardocruzproductions.myclothesstock.entidades.Produto;
 
 public class CadProduto extends AppCompatActivity {
 
@@ -30,6 +36,8 @@ public class CadProduto extends AppCompatActivity {
     static TextView totalItens;
 
     private static ArrayList<Grade> listGrade = new ArrayList<>();
+
+    private static Produto produto = null;
 
     public static ArrayList<Grade> getListGrade() {
         return listGrade;
@@ -166,7 +174,93 @@ public class CadProduto extends AppCompatActivity {
 
     }
 
-    public void adicionar(){
+    public void adicionar(View view){
+
+        if(listGrade.size() == 0){
+
+            Toast.makeText(getApplicationContext(), R.string.insertGrade_error_listaVazia, Toast.LENGTH_LONG).show();
+
+        }else{
+
+            String referencia = this.referencia.getText().toString();
+            String marca = this.marca.getText().toString();
+            String descricao = this.descricao.getText().toString();
+            String precoCusto = this.precoCusto.getText().toString();
+            String precoVenda = this.precoVenda.getText().toString();
+
+            if(referencia.isEmpty() ||
+                    marca.isEmpty() ||
+                    descricao.isEmpty() ||
+                    precoCusto.isEmpty() ||
+                    precoVenda.isEmpty()){
+
+                Toast.makeText(getApplicationContext(), R.string.error_preecha_todos_valores, Toast.LENGTH_LONG).show();
+
+
+            }else{
+
+                Double precoCustoD = 0.d;
+                Double precoVendaD = 0.d;
+
+                try{
+
+                    precoCustoD = Double.parseDouble(precoCusto);
+                    precoVendaD = Double.parseDouble(precoVenda);
+
+                }catch (Exception e){
+
+                    Toast.makeText(getApplicationContext(), R.string.error_conversao_valores, Toast.LENGTH_LONG).show();
+
+                    precoCustoD = 0.d;
+                    precoVendaD = 0.d;
+
+                }
+
+                if(!(precoCustoD.equals(0.d) || precoVendaD.equals(0.d))){
+
+                    try{
+
+                        produto = new Produto();
+                        produto.setReferencia(referencia);
+                        produto.setMarca(marca);
+                        produto.setDescricao(descricao);
+                        produto.setPreco_custo(precoCustoD);
+                        produto.setPreco_venda(precoVendaD);
+
+                        saveProcess();
+
+                    }catch(Exception e){
+
+                        Toast.makeText(getApplicationContext(), R.string.error_falha_registro, Toast.LENGTH_LONG).show();
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+    private void saveProcess() throws Exception{
+
+        produto.save();
+
+        System.out.println("Produto: " +
+                "\nId: "+produto.getId()+
+                "\nDescricao: "+produto.getDescricao());
+
+        System.out.println("Grade:" );
+        for(Grade grade : listGrade){
+
+            grade.setProduto(produto);
+            grade.save();
+            System.out.println(grade.getProduto().getId() + " - "
+                    +grade.getTamanho()+" - "+grade.getQuantidade());
+
+        }
 
     }
 
