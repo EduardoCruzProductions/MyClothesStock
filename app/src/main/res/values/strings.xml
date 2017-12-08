@@ -56,6 +56,7 @@
     <string name="insertGrade_editText_hint_tamanho">Tamanho</string>
     <string name="insertGrade_editText_hint_quantidade">Quantidade</string>
     <string name="insertGrade_btn_text_incluir">Incluir</string>
+    <string name="insertGrade_textView_pressRemove">Mantenha pressionado para remover um item.</string>
 
     <!-- Basics -->
 
