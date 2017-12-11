@@ -228,6 +228,7 @@ public class CadProduto extends AppCompatActivity {
                         produto.setPreco_venda(precoVendaD);
 
                         saveProcess();
+                        clearAll();
 
                     }catch(Exception e){
 
@@ -243,6 +244,25 @@ public class CadProduto extends AppCompatActivity {
 
     }
 
+    private void clearAll(){
+
+        produto = null;
+        listGrade = new ArrayList<>();
+
+        clearScreen();
+
+    }
+
+    private void clearScreen(){
+
+        descricao.setText("");
+        marca.setText("");
+        referencia.setText("");
+        precoVenda.setText("");
+        precoCusto.setText("");
+        totalItens.setText("0");
+
+    }
 
     private void saveProcess() throws Exception{
 
