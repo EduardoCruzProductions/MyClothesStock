@@ -78,6 +78,9 @@ public class Main extends AppCompatActivity
 
         } else if (id == R.id.nav_addCliente) {
 
+            Intent i = new Intent(Main.this, CadCliente.class);
+            startActivity(i);
+
         } else if (id == R.id.nav_addProduto) {
 
             Intent i = new Intent(Main.this, CadProduto.class);

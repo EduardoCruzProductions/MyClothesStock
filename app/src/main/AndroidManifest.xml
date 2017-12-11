@@ -51,6 +51,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="eduardocruzproductions.myclothesstock.CadProduto" />
         </activity>
+        <activity
+            android:name=".CadCliente"
+            android:label="@string/title_activity_cad_cliente"
+            android:parentActivityName=".Main"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="eduardocruzproductions.myclothesstock.Main" />
+        </activity>
     </application>
 
 </manifest>

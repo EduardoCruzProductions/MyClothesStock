@@ -59,6 +59,16 @@
     <string name="insertGrade_textView_pressRemove">Mantenha pressionado para remover um item.</string>
     <string name="insertGrade_error_listaVazia">Nenhum item em grade!</string>
 
+    <!--CadCliente-->
+
+    <string name="title_activity_cad_cliente">Cadastro de cliente</string>
+    <string name="cadCliente_editText_hint_nome">Nome</string>
+    <string name="cadCliente_editText_hint_cpf">CPF</string>
+    <string name="cadCliente_editText_hint_data">Data de nascimento</string>
+    <string name="cadCliente_editText_hint_telefone">Telefone</string>
+    <string name="cadCliente_editText_hint_email">E-mail</string>
+    <string name="cadCliente_btn_text_concluir">Adicionar</string>
+
     <!-- Basics -->
 
     <string name="text_confirm">Confirmar</string>
