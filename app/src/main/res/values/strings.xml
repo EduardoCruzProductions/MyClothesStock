@@ -68,6 +68,8 @@
     <string name="cadCliente_editText_hint_telefone">Telefone</string>
     <string name="cadCliente_editText_hint_email">E-mail</string>
     <string name="cadCliente_btn_text_concluir">Adicionar</string>
+    <string name="cadCliente_textView_numerosApenas">Apenas números</string>
+    <string name="cadCliente_textView_exemploData">Exemplo: 00/00/0000</string>
 
     <!-- Basics -->
 
