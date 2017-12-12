@@ -71,6 +71,10 @@
     <string name="cadCliente_textView_numerosApenas">Apenas números</string>
     <string name="cadCliente_textView_exemploData">Exemplo: 00/00/0000</string>
 
+    <string name="cadCliente_error_preencherRequisitados">Preencha ao menos os capos: Nome, CPF e Telefone.</string>
+    <string name="cadCliente_error_invalidCPF">CPF inválido!</string>
+    <string name="cadCliente_error_invalidDateFormat">Formato de data inválido!</string>
+
     <!-- Basics -->
 
     <string name="text_confirm">Confirmar</string>

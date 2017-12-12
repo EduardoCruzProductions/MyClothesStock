@@ -28,15 +28,16 @@
             android:orientation="vertical" >
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/cadCliente_editText_nome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
-                android:ems="10"
-                android:inputType="textPersonName"
                 android:background="@android:color/white"
+                android:ems="10"
+                android:hint="@string/cadCliente_editText_hint_nome"
+                android:inputType="textPersonName"
                 android:paddingBottom="3dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -44,19 +45,20 @@
                 android:singleLine="true"
                 android:textColor="@color/editText_text"
                 android:textColorHint="@color/editText_hint"
-                android:textSize="32dp"
-                android:hint="@string/cadCliente_editText_hint_nome"/>
+                android:textSize="32dp" />
 
             <EditText
-                android:id="@+id/editText2"
-                android:ems="10"
-                android:inputType="number"
+                android:id="@+id/cadCliente_editText_cpf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
                 android:background="@android:color/white"
+                android:ems="10"
+                android:hint="@string/cadCliente_editText_hint_cpf"
+                android:inputType="number"
+                android:maxLength="11"
                 android:paddingBottom="3dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -64,9 +66,7 @@
                 android:singleLine="true"
                 android:textColor="@color/editText_text"
                 android:textColorHint="@color/editText_hint"
-                android:textSize="32dp"
-                android:hint="@string/cadCliente_editText_hint_cpf"
-                android:maxLength="11"/>
+                android:textSize="32dp" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -81,15 +81,17 @@
                 android:textColor="@color/colorAccent"/>
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/cadCliente_editText_dataNascimento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="date"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
                 android:background="@android:color/white"
+                android:ems="10"
+                android:hint="@string/cadCliente_editText_hint_data"
+                android:inputType="date"
+                android:maxLength="10"
                 android:paddingBottom="3dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -97,9 +99,7 @@
                 android:singleLine="true"
                 android:textColor="@color/editText_text"
                 android:textColorHint="@color/editText_hint"
-                android:textSize="32dp"
-                android:hint="@string/cadCliente_editText_hint_data"
-                android:maxLength="10"/>
+                android:textSize="32dp" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -114,15 +114,17 @@
                 android:textColor="@color/colorAccent" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/cadCliente_editText_telefone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="phone"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
                 android:background="@android:color/white"
+                android:ems="10"
+                android:hint="@string/cadCliente_editText_hint_telefone"
+                android:inputType="phone"
+                android:maxLength="13"
                 android:paddingBottom="3dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -130,20 +132,19 @@
                 android:singleLine="true"
                 android:textColor="@color/editText_text"
                 android:textColorHint="@color/editText_hint"
-                android:textSize="32dp"
-                android:hint="@string/cadCliente_editText_hint_telefone"
-                android:maxLength="13"/>
+                android:textSize="32dp" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/cadCliente_editText_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textEmailAddress"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
                 android:background="@android:color/white"
+                android:ems="10"
+                android:hint="@string/cadCliente_editText_hint_email"
+                android:inputType="textEmailAddress"
                 android:paddingBottom="3dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -151,17 +152,17 @@
                 android:singleLine="true"
                 android:textColor="@color/editText_text"
                 android:textColorHint="@color/editText_hint"
-                android:textSize="32dp"
-                android:hint="@string/cadCliente_editText_hint_email"/>
+                android:textSize="32dp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/cadCliente_button_adicionar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/cadCliente_btn_text_concluir"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/cadCliente_btn_text_concluir"
+                android:onClick="adicionarCliente"/>
 
 
         </LinearLayout>
