@@ -1,5 +1,6 @@
 package eduardocruzproductions.myclothesstock.adaptadores;
 
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,20 +9,21 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import eduardocruzproductions.myclothesstock.R;
-import eduardocruzproductions.myclothesstock.entidades.Grade;
+import eduardocruzproductions.myclothesstock.entidades.Cliente;
+import eduardocruzproductions.myclothesstock.util.ValidadorCPF;
 
-public class GradeAdapterListView extends BaseAdapter{
+public class ClienteAdapterListView extends BaseAdapter{
 
-    private ArrayList<Grade> itens = new ArrayList<>();
+    private ArrayList<Cliente> itens = new ArrayList<>();
     private LayoutInflater mInflater;
 
+    public ClienteAdapterListView(Context context, List<Cliente> list) {
 
-    public GradeAdapterListView(Context context, ArrayList<Grade> list) {
-
-        for(Grade g : list){
-            itens.add(g);
+        for(Cliente c : list){
+            itens.add(c);
         }
 
         mInflater = LayoutInflater.from(context);
@@ -34,7 +36,7 @@ public class GradeAdapterListView extends BaseAdapter{
     }
 
     @Override
-    public Grade getItem(int i) {
+    public Cliente getItem(int i) {
         return itens.get(i);
     }
 
@@ -50,11 +52,12 @@ public class GradeAdapterListView extends BaseAdapter{
 
         if(view == null){
 
-            view = mInflater.inflate(R.layout.adapter_list_grade, null);
+            view = mInflater.inflate(R.layout.adapter_list_cliente, null);
 
             itemHolder = new ItemSuporte();
-            itemHolder.tamanho = ((TextView) view.findViewById(R.id.adapter_list_cliente_textView_nome));
-            itemHolder.quantidade = ((TextView) view.findViewById(R.id.adapter_list_grade_textView_quantidade));
+            itemHolder.nome = (TextView) view.findViewById(R.id.adapter_list_cliente_textView_nome);
+            itemHolder.cpf = (TextView) view.findViewById(R.id.adapter_list_cliente_textView_cpf);
+
             view.setTag(itemHolder);
 
         }else{
@@ -63,17 +66,18 @@ public class GradeAdapterListView extends BaseAdapter{
 
         }
 
-        Grade item = itens.get(i);
-        itemHolder.tamanho.setText(item.getTamanho());
-        itemHolder.quantidade.setText(Integer.toString(item.getQuantidade()));
+        Cliente item = itens.get(i);
+        itemHolder.nome.setText(item.getNome());
+        itemHolder.cpf.setText(ValidadorCPF.imprimeCPF(item.getCpf()));
 
         return view;
+
     }
 
     private class ItemSuporte{
 
-        TextView tamanho;
-        TextView quantidade;
+        TextView nome;
+        TextView cpf;
 
     }
 

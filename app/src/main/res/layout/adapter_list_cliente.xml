@@ -10,22 +10,21 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="M"
-        android:textSize="55dp"
-        android:layout_marginLeft="15dp"
+        android:text="Nome cliente"
+        android:textSize="24dp"
+        android:layout_marginLeft="10dp"
         android:textColor="@color/colorAccent"/>
 
     <TextView
-        android:id="@+id/adapter_list_grade_textView_quantidade"
+        android:id="@+id/adapter_list_cliente_textView_cpf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/adapter_list_cliente_textView_nome"
-        android:layout_alignBottom="@+id/adapter_list_cliente_textView_nome"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
-        android:text="1"
+        android:layout_alignLeft="@+id/adapter_list_cliente_textView_nome"
+        android:layout_alignStart="@+id/adapter_list_cliente_textView_nome"
+        android:layout_below="@+id/adapter_list_cliente_textView_nome"
+        android:layout_marginTop="5dp"
+        android:text="000.000.000-00"
         android:textColor="@color/editText_text"
-        android:textSize="35dp" />
+        android:textSize="18dp" />
 
 </RelativeLayout>

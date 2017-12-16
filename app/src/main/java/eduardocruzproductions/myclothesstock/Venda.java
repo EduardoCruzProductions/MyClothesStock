@@ -16,9 +16,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
-import android.widget.EditText;
-import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import eduardocruzproductions.myclothesstock.adaptadores.ClienteAdapterListView;
+import eduardocruzproductions.myclothesstock.entidades.Cliente;
 
 public class Venda extends AppCompatActivity {
 
@@ -118,6 +123,15 @@ public class Venda extends AppCompatActivity {
                 case 1:
 
                     rootView = inflater.inflate(R.layout.fragment_venda_cliente, container, false);
+
+                    List<Cliente> listAll = Cliente.listAll(Cliente.class);
+
+                    ClienteAdapterListView adapter = new ClienteAdapterListView(getContext(),listAll);
+
+                    ListView listView = (ListView) rootView.findViewById(R.id.venda_cliente_listView);
+
+                    listView.setAdapter(adapter);
+
                     return rootView;
 
                 case 2:
