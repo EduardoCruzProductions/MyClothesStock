@@ -86,6 +86,11 @@
 
     <string name="info_item_excluido">Item excluido com sucesso!</string>
 
+    <!-- Venda -->
 
+    <string name="title_activity_venda">Venda</string>
+    <string name="venda_cliente_textView_title_nome">Nome:</string>
+    <string name="venda_cliente_textView_title_cpf">CPF:</string>
+    <string name="venda_cliente_editText_hint_buscar">Buscar</string>
 
 </resources>

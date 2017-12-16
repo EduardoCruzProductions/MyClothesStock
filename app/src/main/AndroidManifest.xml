@@ -60,6 +60,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="eduardocruzproductions.myclothesstock.Main" />
         </activity>
+        <activity
+            android:name=".Venda"
+            android:label="@string/title_activity_venda"
+            android:parentActivityName=".Main"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="eduardocruzproductions.myclothesstock.Main" />
+        </activity>
     </application>
 
 </manifest>

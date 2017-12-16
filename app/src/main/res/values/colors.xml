@@ -12,4 +12,6 @@
     <color name="btn_background">#fe72b8</color>
     <color name="btn_text">#fff</color>
 
+    <color name="textView_expo_background">#FFCAF2</color>
+
 </resources>

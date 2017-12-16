@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="eduardocruzproductions.myclothesstock.Venda$PlaceholderFragment"
+    android:background="@color/background_color">
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/venda_cliente_textView_title_nome"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/editText_text"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:id="@+id/venda_cliente_textViewNome"
+        android:layout_below="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="nome_cliente"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/textView_expo_background"/>
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/venda_cliente_textViewNome"
+        android:text="@string/venda_cliente_textView_title_cpf"
+        android:textColor="@color/editText_text"
+        android:textSize="18dp"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/venda_cliente_textView_cpf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView8"
+        android:layout_centerHorizontal="true"
+        android:text="000.000.000-00"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/textView_expo_background" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/venda_cliente_textView_cpf"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/linhadivisora"
+        android:layout_marginTop="15dp"/>
+
+    <Spinner
+        android:id="@+id/venda_cliente_spinner_categoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/venda_cliente_editText_buscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:background="@android:color/white"
+        android:hint="@string/venda_cliente_editText_hint_buscar"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:selectAllOnFocus="false"
+        android:singleLine="true"
+        android:textColor="@color/editText_text"
+        android:textColorHint="@color/editText_hint"
+        android:textSize="26dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:id="@+id/venda_cliente_listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/venda_cliente_editText_buscar"
+        android:layout_marginTop="10dp" />
+
+
+</RelativeLayout>
