@@ -1,8 +1,6 @@
 package eduardocruzproductions.myclothesstock;
 
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -16,14 +14,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
-
-
-import java.util.ArrayList;
+import android.widget.TextView;
 import java.util.List;
 
 import eduardocruzproductions.myclothesstock.adaptadores.ClienteAdapterListView;
 import eduardocruzproductions.myclothesstock.entidades.Cliente;
+import eduardocruzproductions.myclothesstock.util.ValidadorCPF;
 
 public class Venda extends AppCompatActivity {
 
@@ -41,6 +39,9 @@ public class Venda extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+
+    private static Cliente cliente;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +92,12 @@ public class Venda extends AppCompatActivity {
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
+
+        private ListView clienteListView;
+        private TextView clienteTextViewNome;
+        private TextView clienteTextViewCpf;
+
+
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -126,11 +133,25 @@ public class Venda extends AppCompatActivity {
 
                     List<Cliente> listAll = Cliente.listAll(Cliente.class);
 
-                    ClienteAdapterListView adapter = new ClienteAdapterListView(getContext(),listAll);
+                    clienteTextViewNome = (TextView) rootView.findViewById(R.id.venda_cliente_textView_nome);
+                    clienteTextViewCpf = (TextView) rootView.findViewById(R.id.venda_cliente_textView_cpf);
 
-                    ListView listView = (ListView) rootView.findViewById(R.id.venda_cliente_listView);
+                    clienteTextViewNome.setText("");
+                    clienteTextViewCpf.setText("");
 
-                    listView.setAdapter(adapter);
+                    final ClienteAdapterListView adapter = new ClienteAdapterListView(getContext(),listAll);
+                    clienteListView = (ListView) rootView.findViewById(R.id.venda_cliente_listView);
+                    clienteListView.setAdapter(adapter);
+                    clienteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            cliente = adapter.getItem(i);
+                            clienteTextViewNome.setText(cliente.getNome());
+                            clienteTextViewCpf.setText(ValidadorCPF.imprimeCPF(cliente.getCpf()));
+
+                        }
+                    });
 
                     return rootView;
 
@@ -151,7 +172,10 @@ public class Venda extends AppCompatActivity {
 
             }
         }
+
     }
+
+
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to

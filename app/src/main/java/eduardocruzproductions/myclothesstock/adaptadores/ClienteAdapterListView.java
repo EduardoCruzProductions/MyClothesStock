@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import eduardocruzproductions.myclothesstock.R;
@@ -25,6 +27,15 @@ public class ClienteAdapterListView extends BaseAdapter{
         for(Cliente c : list){
             itens.add(c);
         }
+
+        Collections.sort(itens,
+                new Comparator<Cliente>(){
+
+                    public int compare(Cliente c1, Cliente c2){
+                        return c1.getNome().compareTo(c2.getNome());
+                    }
+
+                });
 
         mInflater = LayoutInflater.from(context);
 
