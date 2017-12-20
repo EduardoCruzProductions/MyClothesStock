@@ -1,5 +1,6 @@
 package eduardocruzproductions.myclothesstock;
 
+import android.app.AlertDialog;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,18 +10,25 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import java.util.List;
 
 import eduardocruzproductions.myclothesstock.adaptadores.ClienteAdapterListView;
+import eduardocruzproductions.myclothesstock.adaptadores.ProdutoAdapterListView;
 import eduardocruzproductions.myclothesstock.entidades.Cliente;
+import eduardocruzproductions.myclothesstock.entidades.ItensVenda;
+import eduardocruzproductions.myclothesstock.entidades.Produto;
 import eduardocruzproductions.myclothesstock.util.ValidadorCPF;
 
 public class Venda extends AppCompatActivity {
@@ -41,6 +49,7 @@ public class Venda extends AppCompatActivity {
     private ViewPager mViewPager;
 
     private static Cliente cliente;
+    private static List<ItensVenda> itensVenda;
 
 
     @Override
@@ -96,6 +105,9 @@ public class Venda extends AppCompatActivity {
         private TextView clienteTextViewNome;
         private TextView clienteTextViewCpf;
 
+        private ListView produtoListView;
+        private Button produtoBtn;
+
 
         /**
          * The fragment argument representing the section number for this
@@ -128,6 +140,8 @@ public class Venda extends AppCompatActivity {
 
                 case 1:
 
+                    //secao cliente
+
                     rootView = inflater.inflate(R.layout.fragment_venda_cliente, container, false);
 
                     List<Cliente> listAll = Cliente.listAll(Cliente.class);
@@ -156,10 +170,66 @@ public class Venda extends AppCompatActivity {
 
                 case 2:
 
+                    //Secao Produto
+
                     rootView = inflater.inflate(R.layout.fragment_venda_produto, container, false);
+
+                    produtoListView = (ListView) rootView.findViewById(R.id.venda_produto_listView);
+                    produtoBtn = (Button) rootView.findViewById(R.id.venda_produto_btn_adicionar);
+
+                    produtoBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+                            View promptView = layoutInflater.inflate(R.layout.fragment_venda_produto_select_produto, null);
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                            alertDialogBuilder.setView(promptView);
+
+                            final EditText editTextBuscar = (EditText) promptView.findViewById(R.id.venda_produto_alert_editText_buscar);
+                            final ListView listView = (ListView) promptView.findViewById(R.id.venda_produto_alert_listView_selectProduto);
+
+                            if(editTextBuscar.getText().toString().isEmpty()){
+
+                                ProdutoAdapterListView adapter = new ProdutoAdapterListView(getContext(), Produto.listAll(Produto.class));
+                                listView.setAdapter(adapter);
+
+                            }
+
+                            editTextBuscar.addTextChangedListener(new TextWatcher() {
+                                    @Override
+                                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                                    }
+
+                                    @Override
+                                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                                        List<Produto> list = Produto.find(Produto.class, "REFERENCIA like('%"+charSequence+"%')");
+                                        ProdutoAdapterListView adapter = new ProdutoAdapterListView(getContext(), list);
+                                        listView.setAdapter(adapter);
+
+                                    }
+
+                                    @Override
+                                    public void afterTextChanged(Editable editable) {
+
+                                    }
+                            });
+
+
+
+                            AlertDialog alert = alertDialogBuilder.create();
+                            alert.show();
+
+                        }
+                    });
+
                     return rootView;
 
                 case 3:
+
+                    //Secao Pagamento
 
                     rootView = inflater.inflate(R.layout.fragment_venda_pagamento, container, false);
                     return rootView;

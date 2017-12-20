@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color">
+
+    <EditText
+        android:id="@+id/venda_produto_alert_editText_buscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:layout_margin="5dp"
+        android:hint="@string/venda_produto_selectProduto_editText_hint_buscar"
+        android:inputType="textCapCharacters"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:singleLine="true"
+        android:textColor="@color/editText_text"
+        android:textColorHint="@color/editText_hint"
+        android:textSize="32dp"
+        android:background="@android:color/white"/>
+
+    <ListView
+        android:id="@+id/venda_produto_alert_listView_selectProduto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/venda_produto_alert_editText_buscar"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"/>
+
+</RelativeLayout>
