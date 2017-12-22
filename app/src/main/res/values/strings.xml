@@ -7,6 +7,19 @@
 
     <string name="action_settings">Settings</string>
 
+    <!-- Basics -->
+
+    <string name="text_confirm">Confirmar</string>
+    <string name="text_cancel">Cancelar</string>
+
+    <string name="btn_calcular">Calcular</string>
+
+    <string name="error_conversao_valores">Erro de conversão de valores!</string>
+    <string name="error_preecha_todos_valores">Preencha todos os campos!</string>
+    <string name="error_falha_registro">Erro de registro!</string>
+
+    <string name="info_item_excluido">Item excluido com sucesso!</string>
+
     <!-- Tela principal -->
 
     <!-- Barra de menu lateral -->
@@ -75,21 +88,9 @@
     <string name="cadCliente_error_invalidCPF">CPF inválido!</string>
     <string name="cadCliente_error_invalidDateFormat">Formato de data inválido!</string>
 
-    <!-- Basics -->
-
-    <string name="text_confirm">Confirmar</string>
-    <string name="text_cancel">Cancelar</string>
-
-    <string name="error_conversao_valores">Erro de conversão de valores!</string>
-    <string name="error_preecha_todos_valores">Preencha todos os campos!</string>
-    <string name="error_falha_registro">Erro de registro!</string>
-
-    <string name="info_item_excluido">Item excluido com sucesso!</string>
-
     <!-- Venda -->
 
     <string name="title_activity_venda">Venda</string>
-
 
     <string name="venda_cliente_textView_title_nome">Nome:</string>
     <string name="venda_cliente_textView_title_cpf">CPF:</string>
@@ -97,4 +98,13 @@
 
     <string name="venda_produto_btn_text">Adicionar</string>
     <string name="venda_produto_selectProduto_editText_hint_buscar">Buscar</string>
+
+    <string name="venda_produto_define_atributs_textView_preco">Preço:</string>
+    <string name="venda_produto_define_atributs_textView_maxValue">Valor máximo:</string>
+    <string name="venda_produto_define_atributs_textView_titleGeradorDesconto">Gerador de descontos</string>
+    <string name="venda_produto_define_atributs_editText_hint_valor">Valor</string>
+    <string name="venda_produto_define_atributs_textView_precoReal">Preço + Desconto:</string>
+
+
+
 </resources>

@@ -5,7 +5,7 @@
     android:background="@color/background_color">
 
     <EditText
-        android:id="@+id/venda_produto_alert_editText_buscar"
+        android:id="@+id/venda_produto_alert_selectProduto_editText_buscar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -25,11 +25,11 @@
         android:background="@android:color/white"/>
 
     <ListView
-        android:id="@+id/venda_produto_alert_listView_selectProduto"
+        android:id="@+id/venda_produto_alert_selectProduto_listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/venda_produto_alert_editText_buscar"
+        android:layout_below="@+id/venda_produto_alert_selectProduto_editText_buscar"
         android:layout_centerHorizontal="true"
-        android:layout_margin="5dp"/>
+        android:layout_margin="5dp" />
 
 </RelativeLayout>

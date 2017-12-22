@@ -8,21 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.orm.SugarContext;
-import com.orm.util.SugarConfig;
-
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
-import eduardocruzproductions.myclothesstock.adaptadores.GradeAdapterListView;
 import eduardocruzproductions.myclothesstock.entidades.Grade;
 import eduardocruzproductions.myclothesstock.entidades.Produto;
 
@@ -96,7 +88,7 @@ public class CadProduto extends AppCompatActivity {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CadProduto.this);
             alertDialogBuilder.setView(promptView);
 
-            final RadioGroup radios = ((RadioGroup) promptView.findViewById(R.id.cadProduto_alert_gerador_radioGroup));
+            final RadioGroup radios = ((RadioGroup) promptView.findViewById(R.id.venda_produto_alert_defineAtributs_radioGroup));
             final EditText valor = ((EditText) promptView.findViewById(R.id.cadProduto_editText_referencia));
 
             alertDialogBuilder.setCancelable(true)
@@ -109,7 +101,7 @@ public class CadProduto extends AppCompatActivity {
 
                                     switch (radios.getCheckedRadioButtonId()){
 
-                                        case R.id.cadProduto_alert_gerador_radioButton_valor:
+                                        case R.id.venda_produto_alert_defineAtributs_radioButton_valor:
 
                                             calcPrecoVenda(v, "valor");
                                             break;

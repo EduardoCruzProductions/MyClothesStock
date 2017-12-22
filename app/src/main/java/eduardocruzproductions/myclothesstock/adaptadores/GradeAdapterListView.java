@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import eduardocruzproductions.myclothesstock.R;
 import eduardocruzproductions.myclothesstock.entidades.Grade;
@@ -18,7 +19,7 @@ public class GradeAdapterListView extends BaseAdapter{
     private LayoutInflater mInflater;
 
 
-    public GradeAdapterListView(Context context, ArrayList<Grade> list) {
+    public GradeAdapterListView(Context context, List<Grade> list) {
 
         for(Grade g : list){
             itens.add(g);

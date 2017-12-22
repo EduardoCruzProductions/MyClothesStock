@@ -31,6 +31,18 @@ public class ProdutoAdapterListView extends BaseAdapter{
 
     }
 
+    public void updateItens(List<Produto> newList){
+
+        itens.clear();
+
+        for(Produto p : newList){
+
+            itens.add(p);
+
+        }
+
+    }
+
     @Override
     public int getCount() {
         return itens.size();

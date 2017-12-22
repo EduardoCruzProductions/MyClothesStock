@@ -25,8 +25,10 @@ import android.widget.TextView;
 import java.util.List;
 
 import eduardocruzproductions.myclothesstock.adaptadores.ClienteAdapterListView;
+import eduardocruzproductions.myclothesstock.adaptadores.GradeAdapterListView;
 import eduardocruzproductions.myclothesstock.adaptadores.ProdutoAdapterListView;
 import eduardocruzproductions.myclothesstock.entidades.Cliente;
+import eduardocruzproductions.myclothesstock.entidades.Grade;
 import eduardocruzproductions.myclothesstock.entidades.ItensVenda;
 import eduardocruzproductions.myclothesstock.entidades.Produto;
 import eduardocruzproductions.myclothesstock.util.ValidadorCPF;
@@ -186,17 +188,15 @@ public class Venda extends AppCompatActivity {
                             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
                             alertDialogBuilder.setView(promptView);
 
-                            final EditText editTextBuscar = (EditText) promptView.findViewById(R.id.venda_produto_alert_editText_buscar);
-                            final ListView listView = (ListView) promptView.findViewById(R.id.venda_produto_alert_listView_selectProduto);
+                            final EditText editTextBuscar = (EditText) promptView.findViewById(R.id.venda_produto_alert_selectProduto_editText_buscar);
+                            final ListView listView = (ListView) promptView.findViewById(R.id.venda_produto_alert_selectProduto_listView);
 
-                            if(editTextBuscar.getText().toString().isEmpty()){
+                            final ProdutoAdapterListView adapterListViewProduto = new ProdutoAdapterListView(getContext(), Produto.listAll(Produto.class));
 
-                                ProdutoAdapterListView adapter = new ProdutoAdapterListView(getContext(), Produto.listAll(Produto.class));
-                                listView.setAdapter(adapter);
-
-                            }
+                            listView.setAdapter(adapterListViewProduto);
 
                             editTextBuscar.addTextChangedListener(new TextWatcher() {
+
                                     @Override
                                     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -206,8 +206,8 @@ public class Venda extends AppCompatActivity {
                                     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                                         List<Produto> list = Produto.find(Produto.class, "REFERENCIA like('%"+charSequence+"%')");
-                                        ProdutoAdapterListView adapter = new ProdutoAdapterListView(getContext(), list);
-                                        listView.setAdapter(adapter);
+                                        adapterListViewProduto.updateItens(list);
+                                        listView.setAdapter(adapterListViewProduto);
 
                                     }
 
@@ -215,9 +215,35 @@ public class Venda extends AppCompatActivity {
                                     public void afterTextChanged(Editable editable) {
 
                                     }
+
                             });
 
+                            //action created by click on listView
+                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                                    LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+                                    View promptView = layoutInflater.inflate(R.layout.fragment_venda_produto_select_grade, null);
+                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                                    alertDialogBuilder.setView(promptView);
+
+                                    final ListView listView = (ListView) promptView.findViewById(R.id.venda_produto_alert_selectGrade_listView);
+
+                                    Produto produto = adapterListViewProduto.getItem(i);
+
+                                    List<Grade> listGrade = Grade.find(Grade.class,"PRODUTO = ?", produto.getId().toString());
+
+                                    GradeAdapterListView adapterListViewGrade = new GradeAdapterListView(getContext(),listGrade);
+                                    listView.setAdapter(adapterListViewGrade);
+
+                                    AlertDialog alert = alertDialogBuilder.create();
+                                    alert.show();
+
+
+
+                                }
+                            });
 
                             AlertDialog alert = alertDialogBuilder.create();
                             alert.show();
