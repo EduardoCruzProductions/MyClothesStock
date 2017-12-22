@@ -15,8 +15,8 @@
         android:layout_alignParentTop="true"
         android:text="EWH2342"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
-        android:textSize="18dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="25dp"
         android:textColor="@color/colorAccent"/>
 
     <TextView
@@ -25,12 +25,12 @@
         android:layout_height="wrap_content"
         android:text="M"
         android:textColor="@color/colorAccent"
-        android:textSize="22dp"
+        android:textSize="32dp"
         android:layout_alignBaseline="@+id/venda_produto_alert_defineAtributs_textView_referencia"
         android:layout_alignBottom="@+id/venda_produto_alert_defineAtributs_textView_referencia"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="5dp"/>
+        android:layout_marginRight="10dp"/>
 
     <EditText
         android:id="@+id/venda_produto_alert_defineAtributs_editText_quantidade"
@@ -118,11 +118,11 @@
         android:id="@+id/venda_produto_alert_defineAtributs_radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView8"
-        android:layout_centerHorizontal="true"
         android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_below="@+id/textView8"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
         >
 
@@ -170,12 +170,6 @@
         android:id="@+id/venda_produto_alert_defineAtributs_editText_valor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_toLeftOf="@+id/venda_produto_alert_defineAtributs_button_calcular"
-        android:layout_toStartOf="@+id/venda_produto_alert_defineAtributs_button_calcular"
         android:background="@android:color/white"
         android:ems="10"
         android:hint="@string/venda_produto_define_atributs_editText_hint_valor"
@@ -187,7 +181,12 @@
         android:singleLine="true"
         android:textColor="@color/editText_text"
         android:textColorHint="@color/editText_hint"
-        android:textSize="28dp" />
+        android:textSize="28dp"
+        android:layout_above="@+id/imageView5"
+        android:layout_alignRight="@+id/textView8"
+        android:layout_alignEnd="@+id/textView8"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="5dp"/>
 
     <Button
         android:id="@+id/venda_produto_alert_defineAtributs_button_calcular"
@@ -196,9 +195,10 @@
         android:text="@string/btn_calcular"
         android:backgroundTint="@color/btn_background"
         android:textColor="@color/btn_text"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/venda_produto_alert_defineAtributs_radioGroup"
-        android:layout_alignEnd="@+id/venda_produto_alert_defineAtributs_radioGroup" />
+        android:layout_below="@+id/venda_produto_alert_defineAtributs_radioGroup"
+        android:layout_alignRight="@+id/venda_produto_alert_defineAtributs_textView_preco"
+        android:layout_alignEnd="@+id/venda_produto_alert_defineAtributs_textView_preco"
+        android:layout_marginTop="5dp"/>
 
     <ImageView
         android:id="@+id/imageView5"
@@ -226,14 +226,16 @@
         android:id="@+id/venda_produto_alert_defineAtributs_textView_precoReal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView16"
         android:text="250,00"
         android:background="@color/textView_expo_background"
         android:paddingBottom="6dp"
         android:paddingTop="6dp"
         android:textAlignment="center"
         android:textSize="25dp"
-        android:layout_marginTop="5dp"
+        android:layout_below="@+id/textView16"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"/>
 

@@ -1,6 +1,7 @@
 package eduardocruzproductions.myclothesstock;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -185,7 +186,7 @@ public class Venda extends AppCompatActivity {
 
                             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
                             View promptView = layoutInflater.inflate(R.layout.fragment_venda_produto_select_produto, null);
-                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                            final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
                             alertDialogBuilder.setView(promptView);
 
                             final EditText editTextBuscar = (EditText) promptView.findViewById(R.id.venda_produto_alert_selectProduto_editText_buscar);
@@ -218,10 +219,14 @@ public class Venda extends AppCompatActivity {
 
                             });
 
+                            final AlertDialog alert = alertDialogBuilder.create();
+
                             //action created by click on listView
                             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                                    alert.cancel();
 
                                     LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
                                     View promptView = layoutInflater.inflate(R.layout.fragment_venda_produto_select_grade, null);
@@ -237,15 +242,51 @@ public class Venda extends AppCompatActivity {
                                     GradeAdapterListView adapterListViewGrade = new GradeAdapterListView(getContext(),listGrade);
                                     listView.setAdapter(adapterListViewGrade);
 
-                                    AlertDialog alert = alertDialogBuilder.create();
+                                    final AlertDialog alert = alertDialogBuilder.create();
+
+
+                                    //action created by click onListView
+                                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                                            alert.cancel();
+
+                                            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+                                            View promptView = layoutInflater.inflate(R.layout.fragment_venda_produto_define_atributs, null);
+                                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                                            alertDialogBuilder.setView(promptView);
+
+                                            alertDialogBuilder.setCancelable(false);
+                                            alertDialogBuilder.setPositiveButton(R.string.text_confirm, new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                                    //positive action
+
+                                                }
+                                            });
+
+                                            alertDialogBuilder.setNegativeButton(R.string.text_cancel, new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                                    dialogInterface.cancel();
+
+                                                }
+                                            });
+
+                                            AlertDialog alert = alertDialogBuilder.create();
+                                            alert.show();
+
+                                        }
+                                    });
+
                                     alert.show();
-
-
 
                                 }
                             });
 
-                            AlertDialog alert = alertDialogBuilder.create();
                             alert.show();
 
                         }

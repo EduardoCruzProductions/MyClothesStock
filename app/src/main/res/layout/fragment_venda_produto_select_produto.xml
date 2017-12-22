@@ -22,7 +22,8 @@
         android:textColor="@color/editText_text"
         android:textColorHint="@color/editText_hint"
         android:textSize="32dp"
-        android:background="@android:color/white"/>
+        android:background="@android:color/white"
+        android:layout_marginBottom="5dp"/>
 
     <ListView
         android:id="@+id/venda_produto_alert_selectProduto_listView"
@@ -30,6 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/venda_produto_alert_selectProduto_editText_buscar"
         android:layout_centerHorizontal="true"
-        android:layout_margin="5dp" />
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"/>
 
 </RelativeLayout>
