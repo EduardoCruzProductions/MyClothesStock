@@ -22,7 +22,11 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import eduardocruzproductions.myclothesstock.adaptadores.ClienteAdapterListView;
@@ -52,8 +56,8 @@ public class Venda extends AppCompatActivity {
     private ViewPager mViewPager;
 
     private static Cliente cliente;
-    private static List<ItensVenda> itensVenda;
-
+    private static List<ItensVenda> listItensVenda = new ArrayList<>();
+    private static Venda venda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,7 +141,7 @@ public class Venda extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
-            View rootView;
+            final View rootView;
 
             switch (getArguments().getInt(ARG_SECTION_NUMBER)){
 
@@ -239,7 +243,7 @@ public class Venda extends AppCompatActivity {
 
                                     List<Grade> listGrade = Grade.find(Grade.class,"PRODUTO = ?", produto.getId().toString());
 
-                                    GradeAdapterListView adapterListViewGrade = new GradeAdapterListView(getContext(),listGrade);
+                                    final GradeAdapterListView adapterListViewGrade = new GradeAdapterListView(getContext(),listGrade);
                                     listView.setAdapter(adapterListViewGrade);
 
                                     final AlertDialog alert = alertDialogBuilder.create();
@@ -252,20 +256,73 @@ public class Venda extends AppCompatActivity {
 
                                             alert.cancel();
 
+                                            final Grade grade = adapterListViewGrade.getItem(i);
+                                            final ItensVenda itensVenda = new ItensVenda();
+
+                                            itensVenda.setGrade(grade);
+                                            itensVenda.setValor(grade.getProduto().getPreco_venda());
+                                            itensVenda.setValor_real(grade.getProduto().getPreco_venda());
+
                                             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
                                             View promptView = layoutInflater.inflate(R.layout.fragment_venda_produto_define_atributs, null);
                                             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
                                             alertDialogBuilder.setView(promptView);
 
-                                            alertDialogBuilder.setCancelable(false);
-                                            alertDialogBuilder.setPositiveButton(R.string.text_confirm, new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialogInterface, int i) {
+                                            TextView referencia = (TextView) promptView.findViewById(R.id.venda_produto_alert_defineAtributs_textView_referencia);
+                                            TextView tamanho = (TextView) promptView.findViewById(R.id.venda_produto_alert_defineAtributs_textView_tamanho);
+                                            TextView quantidadeTv = (TextView) promptView.findViewById(R.id.venda_produto_alert_defineAtributs_textView_quantidade);
+                                            TextView preco = (TextView) promptView.findViewById(R.id.venda_produto_alert_defineAtributs_textView_preco);
+                                            final TextView precoReal = (TextView) promptView.findViewById(R.id.venda_produto_alert_defineAtributs_textView_precoReal);
 
-                                                    //positive action
+                                            final EditText quantidadeEt = (EditText) promptView.findViewById(R.id.venda_produto_alert_defineAtributs_editText_quantidade);
+                                            final EditText valor = (EditText) promptView.findViewById(R.id.venda_produto_alert_defineAtributs_editText_valor);
+
+                                            final RadioGroup radios = (RadioGroup) promptView.findViewById(R.id.venda_produto_alert_defineAtributs_radioGroup);
+
+                                            Button calcular = (Button) promptView.findViewById(R.id.venda_produto_alert_defineAtributs_button_calcular);
+
+                                            referencia.setText(grade.getProduto().getReferencia());
+                                            tamanho.setText(grade.getTamanho());
+                                            quantidadeTv.setText(Integer.toString(grade.getQuantidade()));
+                                            preco.setText(itensVenda.getValor().toString());
+                                            precoReal.setText(itensVenda.getValor_real().toString());
+
+                                            calcular.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View view) {
+
+                                                    try{
+
+                                                        Double v = Double.parseDouble(valor.getText().toString());
+
+                                                        switch (radios.getCheckedRadioButtonId()){
+
+                                                            case R.id.venda_produto_alert_defineAtributs_radioButton_valor:
+
+                                                                itensVenda.setValor_real(itensVenda.getValor()-v);
+                                                                break;
+
+                                                            case R.id.venda_produto_alert_defineAtributs_radioButton_porcentagem:
+
+                                                                Double fator = itensVenda.getValor() * (v/100);
+                                                                itensVenda.setValor_real(itensVenda.getValor() - fator);
+                                                                break;
+
+                                                        }
+
+                                                        precoReal.setText(itensVenda.getValor_real().toString());
+
+                                                    }catch(Exception e){
+
+                                                        Toast.makeText(getContext(), R.string.error_conversao_valores, Toast.LENGTH_LONG).show();
+
+                                                    }
 
                                                 }
                                             });
+
+                                            alertDialogBuilder.setCancelable(false);
+                                            alertDialogBuilder.setPositiveButton(R.string.text_confirm, null);
 
                                             alertDialogBuilder.setNegativeButton(R.string.text_cancel, new DialogInterface.OnClickListener() {
                                                 @Override
@@ -276,7 +333,53 @@ public class Venda extends AppCompatActivity {
                                                 }
                                             });
 
-                                            AlertDialog alert = alertDialogBuilder.create();
+                                            final AlertDialog alert = alertDialogBuilder.create();
+
+                                            alert.setOnShowListener(new DialogInterface.OnShowListener() {
+                                                @Override
+                                                public void onShow(DialogInterface dialogInterface) {
+
+                                                    Button positiveButton = alert.getButton(AlertDialog.BUTTON_POSITIVE);
+                                                    positiveButton.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View view) {
+
+                                                            if(quantidadeEt.getText().toString().isEmpty()){
+
+                                                                Toast.makeText(getContext(), R.string.venda_produto_define_atributs_alert_error_preencherQuantidade, Toast.LENGTH_LONG).show();
+
+                                                            }else{
+
+                                                                try{
+
+                                                                    int quantidade = Integer.parseInt(quantidadeEt.getText().toString());
+
+                                                                    if(quantidade > grade.getQuantidade()){
+
+                                                                        Toast.makeText(getContext(), R.string.venda_produto_define_atributs_alert_error_quantidadeIndisponivel, Toast.LENGTH_LONG).show();
+
+                                                                    }else{
+
+                                                                        itensVenda.setQuantidade(quantidade);
+                                                                        listItensVenda.add(itensVenda);//adicionando a lista global
+                                                                        alert.dismiss();
+                                                                    }
+
+                                                                }catch(Exception e){
+
+                                                                    quantidadeEt.setText("");
+                                                                    Toast.makeText(getContext(), R.string.error_conversao_valores, Toast.LENGTH_LONG).show();
+
+                                                                }
+
+                                                            }
+
+                                                        }
+                                                    });
+
+                                                }
+                                            });
+
                                             alert.show();
 
                                         }

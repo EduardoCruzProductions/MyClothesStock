@@ -104,7 +104,8 @@
     <string name="venda_produto_define_atributs_textView_titleGeradorDesconto">Gerador de descontos</string>
     <string name="venda_produto_define_atributs_editText_hint_valor">Valor</string>
     <string name="venda_produto_define_atributs_textView_precoReal">Preço + Desconto:</string>
-
+    <string name="venda_produto_define_atributs_alert_error_preencherQuantidade">Preencha o campo de texto Quantidade!</string>
+    <string name="venda_produto_define_atributs_alert_error_quantidadeIndisponivel">Quantidade indisponível em estoque!</string>
 
 
 </resources>
