@@ -47,13 +47,12 @@
         android:id="@+id/adapter_list_produto_textView_precoVenda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/adapter_list_produto_textView_precoCusto"
-        android:layout_alignRight="@+id/adapter_list_produto_textView_precoCusto"
-        android:layout_below="@+id/adapter_list_produto_textView_precoCusto"
-        android:layout_marginTop="5dp"
         android:text="450,00"
         android:textColor="@color/colorAccent"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:layout_alignTop="@+id/adapter_list_produto_textView_marca"
+        android:layout_alignRight="@+id/adapter_list_produto_textView_precoCusto"
+        android:layout_alignEnd="@+id/adapter_list_produto_textView_precoCusto" />
 
     <TextView
         android:id="@+id/adapter_list_produto_textView_descricao"

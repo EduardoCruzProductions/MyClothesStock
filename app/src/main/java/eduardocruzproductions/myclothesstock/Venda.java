@@ -32,6 +32,7 @@ import java.util.List;
 import eduardocruzproductions.myclothesstock.adaptadores.ClienteAdapterListView;
 import eduardocruzproductions.myclothesstock.adaptadores.GradeAdapterListView;
 import eduardocruzproductions.myclothesstock.adaptadores.ProdutoAdapterListView;
+import eduardocruzproductions.myclothesstock.dao.ProdutoDao;
 import eduardocruzproductions.myclothesstock.entidades.Cliente;
 import eduardocruzproductions.myclothesstock.entidades.Grade;
 import eduardocruzproductions.myclothesstock.entidades.ItensVenda;
@@ -184,6 +185,8 @@ public class Venda extends AppCompatActivity {
                     produtoListView = (ListView) rootView.findViewById(R.id.venda_produto_listView);
                     produtoBtn = (Button) rootView.findViewById(R.id.venda_produto_btn_adicionar);
 
+
+
                     produtoBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -196,7 +199,7 @@ public class Venda extends AppCompatActivity {
                             final EditText editTextBuscar = (EditText) promptView.findViewById(R.id.venda_produto_alert_selectProduto_editText_buscar);
                             final ListView listView = (ListView) promptView.findViewById(R.id.venda_produto_alert_selectProduto_listView);
 
-                            final ProdutoAdapterListView adapterListViewProduto = new ProdutoAdapterListView(getContext(), Produto.listAll(Produto.class));
+                            final ProdutoAdapterListView adapterListViewProduto = new ProdutoAdapterListView(getContext(), new ProdutoDao().listProdutoVendivel());
 
                             listView.setAdapter(adapterListViewProduto);
 
@@ -211,7 +214,7 @@ public class Venda extends AppCompatActivity {
                                     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                                         List<Produto> list = Produto.find(Produto.class, "REFERENCIA like('%"+charSequence+"%')");
-                                        adapterListViewProduto.updateItens(list);
+                                        adapterListViewProduto.updateItens(ProdutoDao.removeNoStockUnit(list));
                                         listView.setAdapter(adapterListViewProduto);
 
                                     }
