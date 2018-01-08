@@ -74,7 +74,7 @@ public class Main extends AppCompatActivity
 
         if (id == R.id.nav_venda) {
 
-            Intent i = new Intent(Main.this, Venda.class);
+            Intent i = new Intent(Main.this, ActivityVenda.class);
             startActivity(i);
 
         } else if (id == R.id.nav_pagamento) {

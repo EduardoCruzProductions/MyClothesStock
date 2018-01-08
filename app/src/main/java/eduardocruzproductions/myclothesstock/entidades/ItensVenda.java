@@ -54,4 +54,42 @@ public class ItensVenda extends SugarRecord{
     public void setValor_real(Double valor_real) {
         this.valor_real = valor_real;
     }
+
+    public boolean equals(ItensVenda object){
+
+        if(object.getId() == getId() &&
+                object.getQuantidade() == quantidade &&
+                object.getValor() == valor &&
+                object.getValor_real() == valor_real &&
+                object.getGrade().equals(grade) &&
+                object.getVenda().equals(venda)){
+
+            return true;
+
+        }else{
+
+            return false;
+
+        }
+
+    }
+
+    public boolean equalsNoVenda(ItensVenda object){
+
+        if(object.getId() == getId() &&
+                object.getQuantidade() == quantidade &&
+                object.getValor() == valor &&
+                object.getValor_real() == valor_real &&
+                object.getGrade().equals(grade)){
+
+            return true;
+
+        }else{
+
+            return false;
+
+        }
+
+    }
+
 }

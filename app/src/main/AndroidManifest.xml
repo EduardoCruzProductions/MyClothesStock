@@ -61,7 +61,7 @@
                 android:value="eduardocruzproductions.myclothesstock.Main" />
         </activity>
         <activity
-            android:name=".Venda"
+            android:name=".ActivityVenda"
             android:label="@string/title_activity_venda"
             android:parentActivityName=".Main"
             android:theme="@style/AppTheme.NoActionBar">

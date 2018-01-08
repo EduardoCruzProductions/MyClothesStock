@@ -35,4 +35,21 @@ public class Grade extends SugarRecord{
         this.produto = produto;
     }
 
+    public boolean equals(Grade object){
+
+        if(object.getId() == getId() &&
+                object.getTamanho().equals(tamanho) &&
+                object.getQuantidade() == quantidade &&
+                object.getProduto().equals(produto)){
+
+            return true;
+
+        }else{
+
+            return false;
+
+        }
+
+    }
+
 }

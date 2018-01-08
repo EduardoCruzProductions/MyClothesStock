@@ -11,6 +11,8 @@
 
     <string name="text_confirm">Confirmar</string>
     <string name="text_cancel">Cancelar</string>
+    <string name="text_edit">Editar</string>
+    <string name="text_close">Fechar</string>
 
     <string name="btn_calcular">Calcular</string>
 
@@ -88,7 +90,7 @@
     <string name="cadCliente_error_invalidCPF">CPF inválido!</string>
     <string name="cadCliente_error_invalidDateFormat">Formato de data inválido!</string>
 
-    <!-- Venda -->
+    <!-- ActivityVenda -->
 
     <string name="title_activity_venda">Venda</string>
 
@@ -98,6 +100,8 @@
 
     <string name="venda_produto_btn_text">Adicionar</string>
     <string name="venda_produto_selectProduto_editText_hint_buscar">Buscar</string>
+
+    <string name="venda_produto_selectGrade_error_jaInserido">Este item já foi inserido!</string>
 
     <string name="venda_produto_define_atributs_textView_preco">Preço:</string>
     <string name="venda_produto_define_atributs_textView_maxValue">Valor máximo:</string>

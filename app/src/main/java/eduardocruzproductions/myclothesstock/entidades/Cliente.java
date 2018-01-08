@@ -55,4 +55,24 @@ public class Cliente extends SugarRecord{
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public boolean equals(Cliente object){
+
+        if(object.getId() == getId() &&
+                object.getNome().equals(nome) &&
+                object.getCpf().equals(cpf) &&
+                object.getData_nascimento().equals(data_nascimento) &&
+                object.getTelefone().equals(telefone) &&
+                object.getEmail().equals(email)){
+
+            return true;
+
+        }else{
+
+            return false;
+
+        }
+
+    }
+
 }

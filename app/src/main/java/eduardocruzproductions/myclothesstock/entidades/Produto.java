@@ -53,4 +53,21 @@ public class Produto extends SugarRecord{
         this.preco_venda = preco_venda;
     }
 
+    public boolean equals(Produto object){
+
+        if(object.getId() == getId() &&
+                object.getReferencia().equals(referencia) &&
+                object.getDescricao().equals(descricao) &&
+                object.getMarca().equals(marca) &&
+                object.getPreco_custo().equals(preco_custo) &&
+                object.getPreco_venda().equals(preco_venda)){
+
+            return true;
+
+        }else{
+            return false;
+        }
+
+    }
+
 }

@@ -55,4 +55,23 @@ public class Venda extends SugarRecord{
         this.status = status;
     }
 
+    public boolean equals(Venda object){
+
+        if(object.getId() == getId() &&
+                object.getCliente().equals(cliente) &&
+                object.getData().equals(data) &&
+                object.getValor_total().equals(valor_total) &&
+                object.getValor_real().equals(valor_real) &&
+                object.getStatus().equals(status)){
+
+            return true;
+
+        }else{
+
+            return false;
+
+        }
+
+    }
+
 }
