@@ -110,6 +110,8 @@ public class ActivityVenda extends AppCompatActivity {
      */
     public static class PlaceholderFragment extends Fragment {
 
+        private final DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+
         private ListView clienteListView;
         private TextView clienteTextViewNome;
         private TextView clienteTextViewCpf;
@@ -224,9 +226,8 @@ public class ActivityVenda extends AppCompatActivity {
                             tamanho.setText(grade.getTamanho());
                             quantidadeTv.setText(Integer.toString(grade.getQuantidade()));
 
-                            final DecimalFormat df = new DecimalFormat("#,##0.00");
-                            preco.setText(df.format(iv.getValor()));
-                            precoReal.setText(df.format(iv.getValor_real()));
+                            preco.setText(decimalFormat.format(iv.getValor()));
+                            precoReal.setText(decimalFormat.format(iv.getValor_real()));
 
                             quantidadeEt.setText(String.valueOf(iv.getQuantidade()));
 
@@ -260,7 +261,7 @@ public class ActivityVenda extends AppCompatActivity {
 
                                         }
 
-                                        precoReal.setText(df.format(newIv.getValor_real()));
+                                        precoReal.setText(decimalFormat.format(newIv.getValor_real()));
 
                                     }catch(Exception e){
 
@@ -479,10 +480,8 @@ public class ActivityVenda extends AppCompatActivity {
                                                 tamanho.setText(grade.getTamanho());
                                                 quantidadeTv.setText(Integer.toString(grade.getQuantidade()));
 
-                                                final DecimalFormat df = new DecimalFormat("#,##0.00");
-
-                                                preco.setText(df.format(itensVenda.getValor()));
-                                                precoReal.setText(df.format(itensVenda.getValor_real()));
+                                                preco.setText(decimalFormat.format(itensVenda.getValor()));
+                                                precoReal.setText(decimalFormat.format(itensVenda.getValor_real()));
 
                                                 calcular.setOnClickListener(new View.OnClickListener() {
                                                     @Override
@@ -507,7 +506,7 @@ public class ActivityVenda extends AppCompatActivity {
 
                                                             }
 
-                                                            precoReal.setText(df.format(itensVenda.getValor_real()));
+                                                            precoReal.setText(decimalFormat.format(itensVenda.getValor_real()));
 
                                                         }catch(Exception e){
 
@@ -633,8 +632,7 @@ public class ActivityVenda extends AppCompatActivity {
 
             }
 
-            DecimalFormat df = new DecimalFormat("#,##0.00");
-            produtoTextViewTotal.setText(df.format(total));
+            produtoTextViewTotal.setText(decimalFormat.format(total));
 
         }
 
