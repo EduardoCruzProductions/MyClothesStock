@@ -265,14 +265,25 @@ public class ActivityVenda extends AppCompatActivity {
                                 }
                             });
 
-                            alertDialogBuilder.setCancelable(false);
+                            alertDialogBuilder.setCancelable(true);
                             alertDialogBuilder.setPositiveButton(R.string.text_edit, null);
 
-                            alertDialogBuilder.setNegativeButton(R.string.text_close, new DialogInterface.OnClickListener() {
+                            alertDialogBuilder.setNeutralButton(R.string.text_close, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
 
                                     dialogInterface.cancel();
+
+                                }
+                            });
+
+                            alertDialogBuilder.setNegativeButton(R.string.text_remove, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    listItensVenda.remove(itemIndex);
+                                    itensVendaAdapterListView.updateItens(listItensVenda);
+                                    produtoListView.setAdapter(itensVendaAdapterListView);
 
                                 }
                             });
@@ -309,16 +320,11 @@ public class ActivityVenda extends AppCompatActivity {
 
                                                         if(!(iv.equalsUnregistered(newIv))){
 
-                                                            System.out.println("Veio aqui mano");
                                                             listItensVenda.remove(itemIndex);
                                                             listItensVenda.add(newIv);//adicionando a lista global
 
                                                             itensVendaAdapterListView.updateItens(listItensVenda);
                                                             produtoListView.setAdapter(itensVendaAdapterListView);
-
-                                                        }else{
-
-                                                            Toast.makeText(getContext(), "itens iguais!", Toast.LENGTH_LONG).show();
 
                                                         }
 
