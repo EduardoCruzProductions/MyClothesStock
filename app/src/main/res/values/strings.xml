@@ -100,6 +100,8 @@
     <string name="venda_cliente_editText_hint_buscar">Buscar</string>
 
     <string name="venda_produto_btn_text">Adicionar</string>
+    <string name="venda_produto_textView_total">Total:</string>
+
     <string name="venda_produto_selectProduto_editText_hint_buscar">Buscar</string>
 
     <string name="venda_produto_selectGrade_error_jaInserido">Este item já foi inserido!</string>

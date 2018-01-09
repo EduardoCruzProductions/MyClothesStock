@@ -26,6 +26,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,6 @@ import eduardocruzproductions.myclothesstock.entidades.Cliente;
 import eduardocruzproductions.myclothesstock.entidades.Grade;
 import eduardocruzproductions.myclothesstock.entidades.ItensVenda;
 import eduardocruzproductions.myclothesstock.entidades.Produto;
-import eduardocruzproductions.myclothesstock.entidades.Venda;
 import eduardocruzproductions.myclothesstock.util.ValidadorCPF;
 
 public class ActivityVenda extends AppCompatActivity {
@@ -116,6 +116,7 @@ public class ActivityVenda extends AppCompatActivity {
 
         private ListView produtoListView;
         private Button produtoBtn;
+        private TextView produtoTextViewTotal;
 
 
         /**
@@ -185,9 +186,12 @@ public class ActivityVenda extends AppCompatActivity {
 
                     produtoListView = (ListView) rootView.findViewById(R.id.venda_produto_listView);
                     produtoBtn = (Button) rootView.findViewById(R.id.venda_produto_btn_adicionar);
+                    produtoTextViewTotal = (TextView) rootView.findViewById(R.id.venda_produto_textView_total);
 
                     final ItensVendaAdapterListView itensVendaAdapterListView = new ItensVendaAdapterListView(getContext(), listItensVenda);
                     produtoListView.setAdapter(itensVendaAdapterListView);
+
+                    updateTotalProduto();
 
                     produtoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
@@ -219,8 +223,10 @@ public class ActivityVenda extends AppCompatActivity {
                             referencia.setText(grade.getProduto().getReferencia());
                             tamanho.setText(grade.getTamanho());
                             quantidadeTv.setText(Integer.toString(grade.getQuantidade()));
-                            preco.setText(iv.getValor().toString());
-                            precoReal.setText(iv.getValor_real().toString());
+
+                            final DecimalFormat df = new DecimalFormat("#,##0.00");
+                            preco.setText(df.format(iv.getValor()));
+                            precoReal.setText(df.format(iv.getValor_real()));
 
                             quantidadeEt.setText(String.valueOf(iv.getQuantidade()));
 
@@ -254,7 +260,7 @@ public class ActivityVenda extends AppCompatActivity {
 
                                         }
 
-                                        precoReal.setText(newIv.getValor_real().toString());
+                                        precoReal.setText(df.format(newIv.getValor_real()));
 
                                     }catch(Exception e){
 
@@ -281,11 +287,13 @@ public class ActivityVenda extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
 
-                                    listItensVenda.remove(itemIndex);
-                                    itensVendaAdapterListView.updateItens(listItensVenda);
-                                    produtoListView.setAdapter(itensVendaAdapterListView);
+                                        listItensVenda.remove(itemIndex);
+                                        itensVendaAdapterListView.updateItens(listItensVenda);
+                                        produtoListView.setAdapter(itensVendaAdapterListView);
 
-                                }
+                                        updateTotalProduto();
+
+                                    }
                             });
 
                             final AlertDialog alert = alertDialogBuilder.create();
@@ -326,6 +334,8 @@ public class ActivityVenda extends AppCompatActivity {
                                                             itensVendaAdapterListView.updateItens(listItensVenda);
                                                             produtoListView.setAdapter(itensVendaAdapterListView);
 
+                                                            updateTotalProduto();
+
                                                         }
 
                                                         alert.dismiss();
@@ -335,7 +345,6 @@ public class ActivityVenda extends AppCompatActivity {
                                                 }catch(Exception e){
 
                                                     quantidadeEt.setText("");
-                                                    System.out.println("Error mesagem ------------------------------- "+e.getMessage());
                                                     Toast.makeText(getContext(), R.string.error_conversao_valores, Toast.LENGTH_LONG).show();
 
                                                 }
@@ -469,8 +478,11 @@ public class ActivityVenda extends AppCompatActivity {
                                                 referencia.setText(grade.getProduto().getReferencia());
                                                 tamanho.setText(grade.getTamanho());
                                                 quantidadeTv.setText(Integer.toString(grade.getQuantidade()));
-                                                preco.setText(itensVenda.getValor().toString());
-                                                precoReal.setText(itensVenda.getValor_real().toString());
+
+                                                final DecimalFormat df = new DecimalFormat("#,##0.00");
+
+                                                preco.setText(df.format(itensVenda.getValor()));
+                                                precoReal.setText(df.format(itensVenda.getValor_real()));
 
                                                 calcular.setOnClickListener(new View.OnClickListener() {
                                                     @Override
@@ -495,7 +507,7 @@ public class ActivityVenda extends AppCompatActivity {
 
                                                             }
 
-                                                            precoReal.setText(itensVenda.getValor_real().toString());
+                                                            precoReal.setText(df.format(itensVenda.getValor_real()));
 
                                                         }catch(Exception e){
 
@@ -550,6 +562,8 @@ public class ActivityVenda extends AppCompatActivity {
 
                                                                             itensVendaAdapterListView.updateItens(listItensVenda);
                                                                             produtoListView.setAdapter(itensVendaAdapterListView);
+
+                                                                            updateTotalProduto();
 
                                                                             alert.dismiss();
 
@@ -607,6 +621,21 @@ public class ActivityVenda extends AppCompatActivity {
                     return rootView;
 
             }
+        }
+
+        public void updateTotalProduto(){
+
+            double total = 0;
+
+            for(ItensVenda iv : listItensVenda){
+
+                total += iv.getValor_real() * iv.getQuantidade();
+
+            }
+
+            DecimalFormat df = new DecimalFormat("#,##0.00");
+            produtoTextViewTotal.setText(df.format(total));
+
         }
 
     }
