@@ -224,7 +224,12 @@ public class ActivityVenda extends AppCompatActivity {
 
                             quantidadeEt.setText(String.valueOf(iv.getQuantidade()));
 
-                            final ItensVenda newIv = iv;
+                            final ItensVenda newIv = new ItensVenda();
+                            newIv.setId(iv.getId());
+                            newIv.setQuantidade(iv.getQuantidade());
+                            newIv.setValor_real(iv.getValor_real());
+                            newIv.setValor(iv.getValor());
+                            newIv.setGrade(iv.getGrade());
 
                             calcular.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -301,9 +306,10 @@ public class ActivityVenda extends AppCompatActivity {
 
                                                         newIv.setQuantidade(quantidade);
 
-                                                        //erro, retorna sempre falso
-                                                        if(!(iv.equalsNoVenda(newIv))){
 
+                                                        if(!(iv.equalsUnregistered(newIv))){
+
+                                                            System.out.println("Veio aqui mano");
                                                             listItensVenda.remove(itemIndex);
                                                             listItensVenda.add(newIv);//adicionando a lista global
 

@@ -74,10 +74,14 @@ public class ItensVenda extends SugarRecord{
 
     }
 
-    public boolean equalsNoVenda(ItensVenda object){
+    /**
+     * Compara objetos que ainda nao foram registrados. <br/>
+     * Ou seja, objetos que não possuem ID e referencias de banco de dados.
+     * @param object Objeto a ser comparado.
+     */
+    public boolean equalsUnregistered(ItensVenda object){
 
-        if(object.getId() == getId() &&
-                object.getQuantidade() == quantidade &&
+        if(object.getQuantidade() == quantidade &&
                 object.getValor() == valor &&
                 object.getValor_real() == valor_real &&
                 object.getGrade().equals(grade)){
