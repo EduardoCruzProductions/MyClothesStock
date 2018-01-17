@@ -19,10 +19,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -119,6 +122,8 @@ public class ActivityVenda extends AppCompatActivity {
         private ListView produtoListView;
         private Button produtoBtn;
         private TextView produtoTextViewTotal;
+
+        private Spinner pagamentoSpinnerTipoPagamento;
 
 
         /**
@@ -612,8 +617,16 @@ public class ActivityVenda extends AppCompatActivity {
                     //Secao Pagamento
 
                     rootView = inflater.inflate(R.layout.fragment_venda_pagamento, container, false);
+                    pagamentoSpinnerTipoPagamento = (Spinner) rootView.findViewById(R.id.venda_pagamento_spinner_tipoPagamento);
 
+                    List<String> tipos = new ArrayList<>();
+                    tipos.add("Dinheiro");
+                    tipos.add("Cartão");
+                    tipos.add("Boleto");
 
+                    ArrayAdapter<String> adapterTipoPagamento = new ArrayAdapter<String>(getContext(), R.layout.spinner_item, tipos);
+                    adapterTipoPagamento.setDropDownViewResource(R.layout.spinner_dropdown_item);
+                    pagamentoSpinnerTipoPagamento.setAdapter(adapterTipoPagamento);
 
                     return rootView;
 
