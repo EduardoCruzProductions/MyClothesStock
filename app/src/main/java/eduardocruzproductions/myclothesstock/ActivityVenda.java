@@ -612,10 +612,14 @@ public class ActivityVenda extends AppCompatActivity {
                     //Secao Pagamento
 
                     rootView = inflater.inflate(R.layout.fragment_venda_pagamento, container, false);
+
+
+
                     return rootView;
 
                 default:
 
+                    //aqui tem q copia a parte de cliente
                     rootView = inflater.inflate(R.layout.fragment_venda_cliente, container, false);
                     return rootView;
 
